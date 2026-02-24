@@ -98,3 +98,6 @@ private:
   Quantity initialQuantity_;
   Quantity remainingQuantity_;
 };
+
+using OrderPointer = std::shared_ptr<Order>;
+using OrderPointers = std::list<OrderPointer>;
