@@ -1,5 +1,6 @@
 #pragma once
 
+#include "LevelInfos.hpp"
 class OrderbookLevelInfos {
 public:
   OrderbookLevelInfos(const LevelInfos &bids, const LevelInfos &asks)
