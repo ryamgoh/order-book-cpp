@@ -3,6 +3,7 @@
 #include "OrderType.hpp"
 #include "Side.hpp"
 #include "Usings.hpp"
+#include <cmath>
 #include <format>
 #include <list>
 #include <memory>
@@ -35,6 +36,13 @@ public:
 
       remainingQuantity_ -= quantity;
     }
+  }
+  void ToGoodTillCancel(Price price) {
+    if (GetOrderType() == OrderType::Market)
+      throw std::logic_error(std::format("Order ({}) cannot have its price adjusted, only market orders can.", GetOrderId()));
+
+    price_ = price;
+    orderType_ = OrderType::GoodTillCancel;
   }
 
 private:
