@@ -33,12 +33,11 @@ public:
       throw std::logic_error(std::format(
           "Order ({}) cannot be filled for more than its remaining quanity.",
           GetOrderId()));
-
-      remainingQuantity_ -= quantity;
     }
+    remainingQuantity_ -= quantity;
   }
   void ToGoodTillCancel(Price price) {
-    if (GetOrderType() == OrderType::Market)
+    if (GetOrderType() != OrderType::Market)
       throw std::logic_error(std::format("Order ({}) cannot have its price adjusted, only market orders can.", GetOrderId()));
 
     price_ = price;
